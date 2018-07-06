@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator
 
 # Create your models here.
 
@@ -20,8 +21,9 @@ class Zone(models.Model):
 
 
 class Place(models.Model):
+    number = models.IntegerField(default=1)
     is_free = models.BooleanField(default=True)
     zone = models.ForeignKey(Zone, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "%s %s" % (self.is_free, self.zone.zone_id)
+        return "%s %s %s" % (self.number, self.is_free, self.zone.zone_id)
