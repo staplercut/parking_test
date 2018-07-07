@@ -3,9 +3,10 @@
 
 {% block content %}
 
-    <h2>Выберите парковку</h2>
 
-        <form class="places" method="post" enctype="multipart/form-data">
+    <h2>Выберите зону</h2>
+
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}
               <p>
@@ -20,5 +21,7 @@
             {% endfor %}
 
         </form>
-
+    <form action="{% url 'parking:parking_choice' %}">
+        <input type="submit" value="Назад" />
+    </form>
 {% endblock %}

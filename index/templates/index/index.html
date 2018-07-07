@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'index/base.html' %}
 
-</body>
-</html>
+
+{% block content %}
+
+    <h2><a href="{% url 'parking:parking_choice' %}">Забронировать место</a></h2>
+
+{% endblock %}

@@ -17,7 +17,7 @@ class Zone(models.Model):
     parking = models.ForeignKey(Parking, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "%s %s" % (self.zone_id, self.description)
+        return self.description
 
 
 class Place(models.Model):
@@ -26,4 +26,4 @@ class Place(models.Model):
     zone = models.ForeignKey(Zone, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "%s %s %s" % (self.number, self.is_free, self.zone.zone_id)
+        return "%s" % self.number
