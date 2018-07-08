@@ -1,7 +1,4 @@
 from django.db import models
-from django.core.validators import MinValueValidator
-
-# Create your models here.
 
 
 class Parking(models.Model):
@@ -22,7 +19,7 @@ class Zone(models.Model):
 
 class Place(models.Model):
     number = models.IntegerField(default=1)
-    is_taken = models.BooleanField(default=True)
+    is_taken = models.BooleanField(default=False)
     zone = models.ForeignKey(Zone, on_delete=models.CASCADE)
 
     def __str__(self):
