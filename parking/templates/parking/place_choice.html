@@ -3,25 +3,45 @@
 
 {% block content %}
 
-
-    <h2>Выберите место</h2>
-        <form method="post" enctype="multipart/form-data">
+    <h2>Парковка: {{ parking_name }}, зона: {{ zone_id }}</h2>
+        {{ formset.management_form }}
+        <h3>Список мест</h3>
+        <form method="post" action="">
             {% csrf_token %}
-            {% for field in form %}
-              <p>
-                <p style="color: red">{{ field }}</p>
-                {% if field.help_text %}
-                  <small style="color: grey">{{ field.help_text }}</small>
-                {% endif %}
-                {% for error in field.errors %}
-                  <p style="color: red">{{ error }}</p>
-                {% endfor %}
-              </p>
-            {% endfor %}
+            {{formset.management_form}}
+            <table>
 
+                {% for form in formset|slice:":1" %}
+                    <tr>
+                        {% for field in form.visible_fields %}
+                            <td>
+                                {{ field.label_tag }}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+
+                {% for form in formset %}
+                    <tr>
+                        {% for field in form %}
+                            <td>
+                                {{ field }}
+                                {% if field.help_text %}
+                                <small style="color: grey">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% for error in field.errors %}
+                                     <p style="color: red">{{ error }}</p>
+                                {% endfor %}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+
+            </table><br>
+            <button type="submit">Сохранить</button>
         </form>
-    <form action="{% url 'parking:zone_choice' pk=pk %}">
-        <input type="submit" value="Назад" />
-    </form>
+        <form action="{% url 'parking:zone_choice' pk=pk %}">
+            <input type="submit" value="Назад" />
+        </form>
 
 {% endblock %}

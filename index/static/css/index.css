@@ -1,1 +1,20 @@
-form.places ul {list-style:none}
+h1 a {
+	color: dimgrey;
+    font-size: 40pt;
+}
+
+.page-header {
+    background-color: lightgreen;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}
+
+td
+{
+    width: 70px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+

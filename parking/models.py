@@ -22,7 +22,7 @@ class Zone(models.Model):
 
 class Place(models.Model):
     number = models.IntegerField(default=1)
-    is_free = models.BooleanField(default=True)
+    is_taken = models.BooleanField(default=True)
     zone = models.ForeignKey(Zone, on_delete=models.CASCADE)
 
     def __str__(self):
