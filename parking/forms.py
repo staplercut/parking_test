@@ -44,29 +44,3 @@ class PlaceForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(PlaceForm, self).__init__(*args, **kwargs)
         self.fields['number'].widget.attrs['readonly'] = 'true'
-
-
-
-
-
-
-# class PlaceForm(forms.Form):
-#
-#     place_list = forms.ModelChoiceField(
-#         queryset=Place.objects.all(),
-#         widget=forms.Select(attrs={'onChange': 'this.form.submit();'}),
-#         empty_label=''
-#
-#     )
-#
-#     def __init__(self, *args, **kwargs):
-#         query = kwargs.pop('query', None)
-#         super(PlaceForm, self).__init__(*args, **kwargs)
-#
-#         if query:
-#             self.fields['place_list'].queryset = query
-#             # getting parking zone id of current query
-#             print('here ', query)
-#             z = query[0].zone.zone_id
-#             self.initial['place_list'] = Place.objects.filter(zone__zone_id=z, is_free=False)
-
