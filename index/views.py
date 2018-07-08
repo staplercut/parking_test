@@ -7,14 +7,4 @@ from parking.models import *
 
 
 def index(request):
-    if request.method == "POST":
-        form = ParkingForm(request.POST)
-        if form.is_valid():
-            ch = form.cleaned_data.get('parking_list')
-            print(ch)
-            zones = Zone.objects.filter(parking__description=ch)
-            print(zones)
-            return HttpResponse(zones)
-    else:
-        form = ParkingForm()
-        return render(request, 'index/index.html', {'form': form})
+    return render(request, 'index/index.html')
